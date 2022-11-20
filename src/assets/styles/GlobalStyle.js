@@ -42,6 +42,13 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}`;
+}
+body{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	background-color: #8C11BE;
+	color: #FFFFFF;
+}
+`;
 
 export default GlobalStyle;
