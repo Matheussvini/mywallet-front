@@ -46,9 +46,28 @@ table {
 body{
 	font-family: 'Raleway', sans-serif;
 	font-weight: 400;
-	background-color: #8C11BE;
+	background-color: #302037;
 	color: #FFFFFF;
 }
+button{
+	cursor: pointer;
+    text-align: center;
+	&:hover{
+    opacity: 60%;
+  }
+}
+`;
+
+export const Container = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 `;
 
 export default GlobalStyle;
