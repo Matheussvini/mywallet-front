@@ -49,6 +49,29 @@ body{
 	background-color: #302037;
 	color: #FFFFFF;
 }
+input{
+  background: #FFFFFF;
+  width: 300px;
+  height: 45px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  padding: 0 11px;
+  ::placeholder{
+    color: #7b4397;
+  }
+  :disabled{
+    background-color: #F2F2F2;
+    border: 1px solid #D5D5D5;
+    color: #AFAFAF;
+  }
+}
 button{
 	cursor: pointer;
     text-align: center;
