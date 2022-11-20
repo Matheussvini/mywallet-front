@@ -5,6 +5,7 @@ import axios from "axios";
 import { BASE_URL } from "./constants/urls";
 import UserContext from "./components/Context/context";
 import HomePage from "./pages/HomePage/HomePage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import CreateUserPage from "./pages/CreateUserPage/CreateUserPage";
 import TransactionsPage from "./pages/TransactionsPage/TransactionsPage";
 import AddTransactionPage from "./pages/AddTransactionPage/AddTransactionPage";
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage/>} />
           <Route path="/cadastro" element={<CreateUserPage />} />
           <Route path="/transacoes" element={<TransactionsPage />} />
           <Route path="/adiciona-transacao" element={<AddTransactionPage />} />
