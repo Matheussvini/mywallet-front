@@ -14,11 +14,15 @@ export default function TransactionsPage() {
   const { user, change } = useContext(UserContext);
   const [arrTransactions, setArrTransactions] = useState(null);
   const [error, setError] = useState(null);
+  const [result, setResult] = useState(0.0);
 
   useEffect(() => {
     if (user.length === 0) {
       return navigate("/login");
     }
+
+    let sumEntries = 0;
+    let sumExits = 0;
 
     const config = {
       headers: {
@@ -30,6 +34,12 @@ export default function TransactionsPage() {
       .get(`${BASE_URL}/transacoes`, config)
       .then((res) => {
         setArrTransactions(res.data);
+        res.data.map((t) => {
+          t.type === "entry"
+            ? (sumEntries = sumEntries + t.value)
+            : (sumExits = sumExits + t.value);
+        });
+        setResult((sumEntries - sumExits).toFixed(2));
       })
       .catch((err) => {
         setError(err.message);
@@ -62,19 +72,25 @@ export default function TransactionsPage() {
         </LogoutIcon>
       </Title>
       <BoxTransactions>
-        {arrTransactions?.length === 0 && (
-          <Text>
-            Não há registros de <br /> entrada ou saída
-          </Text>
-        )}
-        {arrTransactions?.map((t, i) => (
-          <TransactionCard
-            transaction={t}
-            key={i}
-            arrTransactions={arrTransactions}
-            setArrTransactions={setArrTransactions}
-          />
-        ))}
+        <div>
+          {arrTransactions?.length === 0 && (
+            <Text>
+              Não há registros de <br /> entrada ou saída
+            </Text>
+          )}
+          {arrTransactions?.map((t, i) => (
+            <TransactionCard
+              transaction={t}
+              key={i}
+              arrTransactions={arrTransactions}
+              setArrTransactions={setArrTransactions}
+            />
+          ))}
+        </div>
+        <ResultCard>
+          <p>SALDO</p>
+          <span>{result}</span>
+        </ResultCard>
       </BoxTransactions>
       <AddTransactionCard />
     </Container>
@@ -89,6 +105,7 @@ const LogoutIcon = styled.div`
   }
 `;
 const BoxTransactions = styled.div`
+  position: relative;
   margin: 20px 0;
   min-width: 40%;
   max-width: 100%;
@@ -97,12 +114,36 @@ const BoxTransactions = styled.div`
   color: #868686;
   display: flex;
   flex-direction: column;
-  padding: 25px 15px;
+  justify-content: space-between;
+  padding: 25px 15px 10px 15px;
   box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 const Text = styled.h3`
+  position: absolute;
+  width: calc(100% - 30px);
+  top: calc(50% - 12px);
   font-size: 20px;
-  line-height: 23.48px;
+  line-height: 24px;
+`;
+const ResultCard = styled.div`
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  line-height: 18.78px;
+  font-weight: 700;
+  p {
+    font-size: 17px;
+    line-height: 20px;
+    color: #000000;
+  }
+  span {
+    font-size: 17px;
+    line-height: 20px;
+    color: #03ac00;
+  }
 `;
