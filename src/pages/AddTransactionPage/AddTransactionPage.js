@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { Container, Title } from "../../assets/styles/GlobalStyle"
+import TransactionForm from "./TransactionForm";
 
 export default function AddTransactionPage() {
     const {type} = useParams();
@@ -10,7 +11,7 @@ export default function AddTransactionPage() {
             <Title>
                 {`Nova ${type}`}
             </Title>
-            <TransictionForm type={type} />
+            <TransactionForm type={type} />
         </Container>
     )
 }
