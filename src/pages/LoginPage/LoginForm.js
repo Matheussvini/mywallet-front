@@ -102,4 +102,5 @@ const CheckBox = styled.div`
 const CheckInput = styled.input`
   width: 20px;
   margin-right: 20px;
+  margin-top: 12px;
 `;
