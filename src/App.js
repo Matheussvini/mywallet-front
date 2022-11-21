@@ -30,7 +30,7 @@ function App() {
           <Route path="/login" element={<LoginPage/>} />
           <Route path="/cadastro" element={<CreateUserPage />} />
           <Route path="/transacoes" element={<TransactionsPage />} />
-          <Route path="/adiciona-transacao" element={<AddTransactionPage />} />
+          <Route path="/adiciona-transacao/:type" element={<AddTransactionPage />} />
         </Routes>
 
         <GlobalStyle />

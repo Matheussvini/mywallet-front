@@ -7,6 +7,7 @@ import UserContext from "../../components/Context/context";
 import { HiOutlineLogout } from "react-icons/hi";
 import { BASE_URL } from "../../constants/urls";
 import TransactionCard from "./TransactionCard";
+import AddTransactionCard from "./AddTransactionCard";
 
 export default function TransactionsPage() {
   const navigate = useNavigate();
@@ -75,6 +76,7 @@ export default function TransactionsPage() {
           />
         ))}
       </BoxTransactions>
+      <AddTransactionCard />
     </Container>
   );
 }
