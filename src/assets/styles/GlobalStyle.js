@@ -91,6 +91,20 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
+  padding: 24px;
+  box-sizing: border-box;
 `;
+
+export const Title = styled.h1`
+  width: 100%;
+  height: 31px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 30.52px;
+  color: #FFFFFF;
+`
 
 export default GlobalStyle;
