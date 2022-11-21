@@ -15,6 +15,8 @@ export default function HomePage() {
 }
 
 const Logo = styled.img`
+  position: absolute;
+  top: 0;
   height: 100vh;
   margin: 0 auto;
   max-width: 100%;

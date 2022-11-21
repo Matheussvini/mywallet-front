@@ -84,8 +84,7 @@ button{
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  height: 100%;
+  min-height: calc(100vh - 48px);
   margin: 0 auto;
   display: flex;
   align-items: center;
