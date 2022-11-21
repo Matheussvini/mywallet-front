@@ -13,6 +13,7 @@ import AddTransactionPage from "./pages/AddTransactionPage/AddTransactionPage";
 function App() {
   const [user, setUser] = useState([]);
   const [error, setError] = useState(null);
+  const [change, setChange] = useState(false);
 
   const localUserSerializado = localStorage.getItem("localUser");
   const localUser = JSON.parse(localUserSerializado);
@@ -22,7 +23,7 @@ function App() {
   }
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, change, setChange }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />

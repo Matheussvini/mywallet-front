@@ -10,13 +10,13 @@ import TransactionCard from "./TransactionCard";
 
 export default function TransactionsPage() {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user, change } = useContext(UserContext);
   const [arrTransactions, setArrTransactions] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (user.length === 0) {
-      navigate("/login");
+      return navigate("/login");
     }
 
     const config = {
@@ -34,7 +34,7 @@ export default function TransactionsPage() {
         setError(err.message);
         alert(err.response.data);
       });
-  }, []);
+  }, [change]);
 
   function logout() {
     const confirmation = window.confirm("Deseja realmente sair?");
@@ -67,7 +67,12 @@ export default function TransactionsPage() {
           </Text>
         )}
         {arrTransactions?.map((t, i) => (
-          <TransactionCard transaction={t} key={i} />
+          <TransactionCard
+            transaction={t}
+            key={i}
+            arrTransactions={arrTransactions}
+            setArrTransactions={setArrTransactions}
+          />
         ))}
       </BoxTransactions>
     </Container>
